@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let fruit = ["apple", "banana", "orange", "grape"];
+        let numbers = [10, 20, 30, 40, 50];
+        let booleans = [true, false, false, true];
+        let mixedArray = ["apple", 20, false, "student"];
+
+        // let emptyArray = [];
+
+        console.log("fruits:", fruit);
+        console.log("numbers:", numbers);
+        console.log("booleans:", booleans);
+        console.log("Mixed arrays:", mixedArray);
+
+        console.log("");
+
+        console.log("Number of fruits:", fruit.length);
+        console.log("Number of numbers:", numbers.length);
+        console.log("Number of booleans:", booleans.length);
+        console.log("Number of mixed arrays:", mixedArray);
+
+        console.log("First fruit:", fruit[0]);
+        console.log("third fruit:", fruit[2]);
+        console.log("last fruit:", fruit[-1]);
+
+        //modifying arrays 
+        let colors = ["green", "purple", "blue", "yellow", "red"];
+        console.log("original colours:", colors);
+
+        //changing existing colors 
+        colors[1] = "black";
+        colors[3] = "orange";
+        console.log("after changes:", colors)
+
+        console.log("");
+
+        let shoppingList = ["eggs"];
+        console.log("shopping list:", shoppingList);
+
+        shoppingList.push("milk");
+        shoppingList.push("cheese");
+        console.log("New shopping list:", shoppingList);
+
+        console.log("");
+        // removing last element
+        let removedItems = shoppingList.pop()
+        console.log("removed item:", removedItems);
+        console.log("updated shopping list:", shoppingList);
+
+        //adding elements to the beginning
+        shoppingList.unshift("cake");
+        console.log("latest shopping list:", shoppingList);
+
+        //removing first element
+        let removeItems = shoppingList.shift();
+        console.log("Removed first items:", removeItems);
+        console.log("new shopping list:", shoppingList);
+
+        console.log("");
+
+        //finding elements
+        let students = ["Alice", "Bob", "Charlie", "Diana"];
+        console.log("Student:", students);
+        console.log("Is Bob in class?", students.includes("Bob"));
+        console.log("Where is Charlie?", students.indexOf("Charlie"));
+        console.log("Where is Frank?", students.indexOf("Frank"));
+        console.log("Is Diana in class?", students.includes("Diana"));
+        console.log("Where is Diana?", students.indexOf("Diana"));
+
+
+        let numberss = [1, 2, 3, 4, 5];
+        let names = ("John", "Jane", "Bob", "Alice");
+        console.log("Original numbers:", numberss);
+        console.log("original names:", names);
+
+        console.log("");
+
+        let firstThree = numberss.slice(0, 3);
+        let lastTwo = numberss.slice(-2);
+        console.log("First three numbers:", firstThree);
+        console.log("Last two numbers:", lastTwo);
+        console.log("Original numbers:", numberss);
+
+        console.log("");
+
+        //splice() - Remove/add items at specific position
+        let fruits = ["apple", "banana", "orange", "grape", "kiwi"];
+        console.log("Original fruits:", fruits);
+
+        let remove = fruits.splice(1, 2);
+        console.log("removed fruits:", remove);
+        console.log("final fruits", fruits)
+
+        fruits.splice(0, 1, "mango", "pawpaw");
+        console.log("new list:", fruits)
+
+        //join()- convert array to string
+        let words = ["Hello", "from javascript"];
+        let sentence = words.join(" ");
+        let csv = words.join(",")
+        console.log("new sentence:", sentence);
+        console.log("new words:", csv);
+
+        console.log("")
+        // split()
+        let message = "apple, banana, orange";
+        let fruitArray = message.split(",");
+        console.log("message:", message);
+        console.log("fruit array:", fruitArray);
+
+        // reverse() - Reverse array order (changes original)
+        let countdown = [1, 2, 3, 4, 5];
+        console.log("Original countdown:", countdown);
+        countdown.reverse();
+        console.log("reversed countdown:", countdown);
+
+
+        console.log("");
+
+        // Basic for loop structure:
+        // for (initialization; condition; increment) {
+        //     code to repeat
+
+        // simple counting loop
+        console.log("Counting from one to five");
+        for (let i = 1; i <= 5; i++) {
+            console.log("count:", i)
+        }
+
+        console.log("");
+
+        //counting backwards
+
+        console.log("counting from five to one");
+        for (let i = 5; i >= 1; i--) {
+            console.log("countdown:", i);
+        }
+
+        console.log("Blast off!");
+
+
+        console.log("");
+
+        // using loops with calculation 
+
+        console.log("mutiplication table for 3");
+        for (let i = 1; i <= 10; i++) {
+            let result = 3 * i;
+            console.log(`3 x ${i} = ${result}`);
+        }
+
+        console.log("");
+
+        //loop with different step sizes
+
+        console.log("Even numbers from two to ten");
+        for (let i = 2; i <= 10; i += 2) {
+
+            console.log("Even number:", i);
+        }
+
+        console.log("");
+
+        //loop through an array using index
+        let colorss = ["red", "green", "blue", "yellow"];
+        console.log("Colors:", colorss);
+        for (let i = 0; i < colorss.length; i++) {
+            console.log(`Color ${i + 1}: ${colorss[i]}`);
+        }
+
+        //for .. of loop - easier way to go through array items
+        let fruitss = ["apple", "banana", "cashew", "kiwi"]
+        for (let x of fruitss) {
+            console.log("i like", x);
+        }
+
+        // processing numbers with for .. of
+        // let numbersss = [25, 83, 71, 85, 67];
+        // let total = 0;
+        // console.log("Calculating average score:");
+        // for (let x of numbersss) {
+        //     console.log("adding scores:", numbersss);
+        //     total += numbersss;
+        // }
+
+        // let average = total / numbersss.length;
+        // console.log(`Total: ${total}, Average: ${average.toFixed[1]}`);
+
+        // using loops with conditions
+        let temperatures = [68, 72, 85, 90, 75, 82, 88];
+        let hotDays = 0;
+        let coldDays = 0;
+
+        console.log("Analyzing temperatures:");
+        for (let temp of temperatures) {
+            if (temp >= 85) {
+                hotDays++;
+                console.log(`${temp}∘F- Hot day!`);
+            } else if (temp < 70) {
+                coldDays++;
+                console.log(`${temp}∘F- Cold day!`);
+            } else {
+                console.log(`${temp}∘F- Nice day!`);
+            }
+        }
+
+        console.log(`Summary: ${hotDays} hot days, ${coldDays} cold days`);
+
+        
+    </script>
+</body>
+
+</html>

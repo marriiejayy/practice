@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Interactive Page</title>
+</head>
+<body>
+    <h1 id="title">Original Title</h1>
+    <p id="description">Original description text.</p>
+    <p class="info">This paragraph has a class.</p>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+    <button onclick="changeElement()">Change elements</button>
+    <button onclick="addListItem()">Add List Item</button>
+    <button onclick="resetPage()">Reset</button>
+
+    <script>
+    function changeElement() {
+        document.getElementById('title').textContent = "Javascript changed this title!";
+        document.getElementById('description').innerHTML = "<strong>This text is now bold</strong>"
+        let infoElement = document.querySelector('.info');
+        infoElement.textContent = "found by class name and changed!";
+
+        document.getElementById('title').style.color = "blue";
+        document.getElementById('title').style.fontSize = "36px"
+
+        document.getElementById('description').style.color = "aquamarine"
+
+
+        
+    }
+    </script>
+    
+    
+</body>
+</html>
