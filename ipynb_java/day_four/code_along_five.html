@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changing Html Element</title>
+</head>
+
+<body>
+    <h1>user input demo</h1>
+
+    <div>
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" name="nameInput" placeholder="Enter your name">
+        <button onclick="greetUser()">Greet Me</button>
+    </div>
+
+    <div id="greeting"></div>
+
+    <hr>
+
+    <div>
+        <label for="ageInput">Age:</label>
+        <input type="number" id="ageInput" name="ageInput" placeholder="Enter your age">
+        <button onclick="checkAge()">Check Age</button>
+    </div>
+
+    <div id="ageResult"></div>
+
+
+    <div>
+        <h3>Simple calculator</h3>
+        <input type="number" id="num1" placeholder="First number">
+        <select id="operation">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+
+        </select>
+
+        <input type="number" id="num2" placeholder="Second number">
+        <button onclick="calculate()">Calculate</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function greetUser() {
+            let name = document.getElementById('nameInput').value;
+
+            if (name === "") {
+                document.getElementById('greeting').textContent = "please enter your name";
+                return;
+            }
+
+
+            let greeting = `Hello ${name} welcome to our website.`;
+            document.getElementById('greeting').textContent = greeting;
+            document.getElementById('greeting').style.color = "green"
+        }
+
+        function checkAge() {
+            let age = document.getElementById('ageInput').value;
+            let resultDiv = document.getElementById('ageResult')
+
+
+            age = Number(age);
+
+            if (age === 0 || isNaN(age)) {
+                resultDiv.textContent = "please enter a valid age!"
+                resultDiv.style.color = "red"
+                return;
+            }
+
+            let message = "";
+            if (age < 13) {
+                message = `You are ${age} years old- you are a child.`
+            } else if (age < 18) {
+                message = `You are ${age} years old - you are a teenager.`
+            } else if (age < 65) {
+                message = `You are ${age} years old - you are an adult and can vote`
+            } else
+                message = `You are ${age}- you are a senior`
+
+            resultDiv.textContent = message;
+            resultDiv.style.color = "blue";
+        }
+
+        function calculate() {
+            let num1 =  Number(document.getElementById('num1').value);
+            let num2 = Number(document.getElementById('num2').value);
+            let operation = document.getElementById('operation').value;
+            let resultDiv = document.getElementById('result')
+        
+
+        if (isNaN(num1) || isNaN(num2)) {
+            resultDiv.textContent = "Please enter valid numbers!";
+            resultDiv.style.color = "red";
+            return;
+        }
+
+        let answer;
+        let operationSymbol = operation;
+
+        if (operation === "+") {
+            answer = num1 + num2;
+        } else if (operation === "-") {
+            answer = num1 - num2;
+        } else if (operation === "*") {
+            answer = num1 * num2;
+            operationSymbol = "x";
+        } else if (operation === "/") {
+            if (num2 === 0) {
+                resultDiv.textContent = "cannot divide by zero!";
+                return;
+            }
+            answer = num1 / num2;
+        }
+
+            resultDiv.textContent = `${num1} ${operationSymbol} ${num2} = ${answer}`;
+            resultDiv.style.color = "green";
+            resultDiv.style.fontSize = "20px";
+        
+    }
+    </script>
+
+</body>
+
+</html> 

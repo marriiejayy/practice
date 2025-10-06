@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Different Event Types</title>
+    <style>
+        .highlight {background-color: yellow;}
+
+        .box {
+            width: 200px;
+            height: 100px;
+            border: 2px solid black;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Different types of events</h1>
+
+    <div class="box" id="mouseBox"
+        onmouseover= "handleMouseOver()"
+        onmouseout="handleMouseOut()">
+        Hover over me!
+    </div>
+  
+    <div>
+        <label>Type something:</label>
+        <input type="text" id="textInput"
+        onkeyup="handleKeyPress()"
+        onfocus="handleFocus()"
+        onblur="handleBlur()">
+    </div>
+    <div id="keyOutput"></div>
+
+    <form onsubmit="handleSubmit(event)">
+        <label>Email:</label>
+        <input type="email" id="emailInput" required>
+        <button type="submit">submit</button>
+    </form>
+
+    <div>
+        <label>Choose a color:</label>
+        <select id="colorSelect" onchange="changeBackgroundColor()">
+            <option value="white">White</option>
+            <option value="lightblue">light blue</option>
+            <option value="lightgreen">light green</option>
+            <option value="pink">pink</option>
+        </select>
+    </div>
+
+    <div id="eventLog"></div>
+
+    <script>
+        function handleMouseOver() {
+            document.getElementById('mouseBox').style.backgroundColor = "lightblue";
+            document.getElementById('mouseBox').textContent = "mouse is over me!"
+            logEvent('mouse entered the box');
+        }
+
+        function handleMouseOut() {
+            document.getElementById('mouseBox').style.backgroundColor = "";
+            document.getElementById('mouseBox').textContent = "Hover over me!";
+            logEvent('Mouse left the box');
+        }
+
+        //key board events
+        function handleKeyPress() {
+           let InputValue = document.getElementById('textInput').value;
+           let output = document.getElementById('keyOutput');
+
+           if(InputValue.lenght === 0) {
+            output.textContent = '';
+           }  else {
+                output.textContent = `You typed: "${InputValue}" (${InputValue.length} characters)`;
+           }
+
+           logEvent(`User typed: ${InputValue}`);
+        }
+
+        function handleFocus() {
+            document.getElementById('textInput').classList.add('highlight');
+            logEvent('Input field focused')
+        } 
+
+        function handleBlur() {
+            document.getElementById('textInput').classList.remove('highlight');
+            logEvent(`Input field lost focus`);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); 
+            
+            let email = document.getElementById('emailInput').value;
+
+            logEvent(`Form submitted with email: ${email}`);
+            alert(`Thank you! Email ${email} has been submitted`)
+        }
+
+        function changeBackgroundColor() {
+            let selectedColor = document.getElementById('colorSelect').value;
+            document.body.style.backgroundColor = selectedColor;
+            logEvent(`Background color changed to: ${selectedColor}`);
+        }
+
+        function logEvent (message) {
+            let eventLog = document.getElementById("eventLog")
+            let timeStamp = new Date().toTimeString();
+            let newLogEntry = `[${timeStamp}] ${message}`;
+        
+
+            if (eventLog.innerHTML === '') {
+                eventLog.innerHTML = `<strong>Event log:</strong><br>${newLogEntry}`
+            } else {
+                eventLog.innerHTML = eventLog.innerHTML + `<br>${newLogEntry}`
+            }
+            console.log(newLogEntry);
+        }
+
+        logEvent(`Page loaded sucessfully`);
+    </script>
+
+</body>
+</html>
